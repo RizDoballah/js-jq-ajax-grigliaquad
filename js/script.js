@@ -4,30 +4,35 @@
 // Il numero ottenuto appare al centro del quadrato.
 
 $(document).ready(function() {
-  $.ajax(
-{
-  url: "https://flynn.boolean.careers/exercises/api/random/int",
-  method: "GET",
-  success: function (data) {
-    console.log(data.response);
-    $('.box').click(function() {
-      if (data.response <= 5) {
-      $(this).addClass('yellow');
-      } else if (data.response > 5) {
-      $(this).addClass('green');
+  $('.box').click(function() {
+    var box = $(this);
+    console.log(box);
+    $.ajax(
+      {
+        url: "https://flynn.boolean.careers/exercises/api/random/int",
+        method: "GET",
+        success: function (data) {
+          console.log(box);
+          console.log(data.response);
+            if (data.response <= 5) {
+              box.addClass('yellow');
+            } else if (data.response > 5) {
+              box.addClass('green');
+            }
+            box.text(data.response);
+        },
+        error: function () {
+          alert("E' avvenuto un errore. ");
+        }
       }
-      $(this).text(data.response);
-    });
-  },
-  error: function () {
-    alert("E' avvenuto un errore. ");
-    }
-  }
-  );
+    );
 
-  for (var i = 0; i < 36; i++) {
-    $('#row').append($('<div class="box"></div>'))
-  }
+  });
+
+
+  // for (var i = 0; i < 36; i++) {
+  //   $('#row').append($('.box'))
+  // }
   // var source = $('.#entry-template').html();
   // var template = Handlebars.compile(source);
   //
