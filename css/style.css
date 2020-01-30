@@ -9,9 +9,11 @@
 .green {
   background-color: green;
 }
-.row {
+#row {
+  width: 600px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 .box {
   display: flex;
